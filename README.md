@@ -5,16 +5,12 @@ natively on Linux
 
 To build:
 
-    ./build <docker tag>
+    docker build -t <docker tag> .
 
-(this finishes by running 'docker build -t <tag> .')
+Example:
+
+    docker build -t spectralogic/freebsd-cross-build:11.1 .
 
 To run:
 
     docker run --rm -it <tag>
-
-There is /freebsd/bin on the path. It has all of the build
-tools (e.g. x86_64-pc-freebsd9-gcc)
-
-It is likely you would add a -v switch to the run (to put your
-code on a mount).
