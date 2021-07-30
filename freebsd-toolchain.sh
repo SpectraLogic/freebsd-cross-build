@@ -4,8 +4,8 @@
 set -eux
 
 arch=$1
-binutils_version=2.25.1
-freebsd_version=11.4
+binutils_version=2.33.1
+freebsd_version=11.1
 triple=$arch-unknown-freebsd11
 sysroot=/usr/local/$triple
 
@@ -58,8 +58,7 @@ for lib in c++ c_nonshared compiler_rt execinfo gcc pthread rt ssp_nonshared; do
 done
 
 # Originally downloaded from:
-# URL=https://download.freebsd.org/ftp/releases/${freebsd_arch}/${freebsd_version}-RELEASE/base.txz
-URL=https://ci-mirrors.rust-lang.org/rustc/2020-08-09-freebsd-${freebsd_arch}-${freebsd_version}-RELEASE-base.txz
+URL=http://ftp-archive.freebsd.org/pub/FreeBSD-Archive/old-releases/${freebsd_arch}/${freebsd_version}-RELEASE/base.txz
 curl "$URL" | tar xJf - -C "$sysroot" --wildcards "${files_to_extract[@]}"
 
 # Clang can do cross-builds out of the box, if we give it the right
