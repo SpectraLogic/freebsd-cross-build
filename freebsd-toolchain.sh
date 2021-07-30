@@ -28,7 +28,7 @@ exit 1
 # First up, build binutils
 mkdir binutils
 cd binutils
-curl https://ftp.gnu.org/gnu/binutils/binutils-${binutils_version}.tar.bz2 | tar xjf -
+curl https://ftp.gnu.org/gnu/binutils/binutils-${binutils_version}.tar.xz | tar xJf -
 mkdir binutils-build
 cd binutils-build
 hide_output ../binutils-${binutils_version}/configure \
@@ -57,7 +57,6 @@ for lib in c++ c_nonshared compiler_rt execinfo gcc pthread rt ssp_nonshared; do
   files_to_extract=("${files_to_extract[@]}" "./usr/lib/lib${lib}.*")
 done
 
-# Originally downloaded from:
 URL=http://ftp-archive.freebsd.org/pub/FreeBSD-Archive/old-releases/${freebsd_arch}/${freebsd_version}-RELEASE/base.txz
 curl "$URL" | tar xJf - -C "$sysroot" --wildcards "${files_to_extract[@]}"
 
