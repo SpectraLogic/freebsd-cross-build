@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   file \
   curl \
   ca-certificates \
+  git \
   wget \
   pkg-config
 
