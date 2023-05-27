@@ -57,7 +57,7 @@ for lib in c++ c_nonshared compiler_rt execinfo gcc pthread rt ssp_nonshared; do
   files_to_extract=("${files_to_extract[@]}" "./usr/lib/lib${lib}.*")
 done
 
-URL=http://ftp-archive.freebsd.org/pub/FreeBSD-Archive/old-releases/${freebsd_arch}/${freebsd_version}-RELEASE/base.txz
+URL=https://archive.freebsd.org/old-releases/${freebsd_arch}/${freebsd_version}-RELEASE/base.txz
 curl "$URL" | tar xJf - -C "$sysroot" --wildcards "${files_to_extract[@]}"
 
 # Clang can do cross-builds out of the box, if we give it the right
