@@ -50,10 +50,10 @@ files_to_extract=(
 "./usr/lib/*crt*.o"
 )
 # Try to unpack only the libraries the build needs, to save space.
-for lib in c cxxrt gcc_s m thr util; do
+for lib in c cxxrt gcc_s m thr util md z; do
   files_to_extract=("${files_to_extract[@]}" "./lib/lib${lib}.*" "./usr/lib/lib${lib}.*")
 done
-for lib in c++ c_nonshared compiler_rt execinfo gcc pthread rt ssp_nonshared; do
+for lib in c++ c_nonshared compiler_rt execinfo gcc pthread rt ssp_nonshared bz2 dl lzma wrap; do
   files_to_extract=("${files_to_extract[@]}" "./usr/lib/lib${lib}.*")
 done
 
