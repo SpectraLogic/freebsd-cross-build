@@ -17,8 +17,8 @@ COPY freebsd-toolchain.sh /tmp/
 RUN /tmp/freebsd-toolchain.sh x86_64
 
 ENV \
-    AR=x86_64-unknown-freebsd12-ar \
-    CC=x86_64-unknown-freebsd12-clang \
-    CX=x86_64-unknown-freebsd12-clang++
+    AR=x86_64-unknown-freebsd13-ar \
+    CC=x86_64-unknown-freebsd13-clang \
+    CX=x86_64-unknown-freebsd13-clang++
 
 ENV HOSTS=x86_64-unknown-freebsd

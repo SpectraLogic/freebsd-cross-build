@@ -9,7 +9,7 @@ To build:
 
 Example:
 
-    docker build -t spectralogic/freebsd-cross-build:12.1 .
+    docker build -t spectralogic/freebsd-cross-build:13.1 .
 
 To run:
 
