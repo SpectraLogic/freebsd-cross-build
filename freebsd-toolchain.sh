@@ -5,8 +5,8 @@ set -eux
 
 arch=$1
 binutils_version=2.34
-freebsd_version=12.1
-triple=$arch-unknown-freebsd12
+freebsd_version=13.1
+triple=$arch-unknown-freebsd13
 sysroot=/usr/local/$triple
 
 hide_output() {
@@ -50,14 +50,14 @@ files_to_extract=(
 "./usr/lib/*crt*.o"
 )
 # Try to unpack only the libraries the build needs, to save space.
-for lib in c cxxrt gcc_s m thr util; do
+for lib in c cxxrt gcc_s m thr util md z; do
   files_to_extract=("${files_to_extract[@]}" "./lib/lib${lib}.*" "./usr/lib/lib${lib}.*")
 done
-for lib in c++ c_nonshared compiler_rt execinfo gcc pthread rt ssp_nonshared; do
+for lib in c++ c_nonshared compiler_rt execinfo gcc pthread rt ssp_nonshared bz2 dl lzma wrap; do
   files_to_extract=("${files_to_extract[@]}" "./usr/lib/lib${lib}.*")
 done
 
-URL=http://ftp-archive.freebsd.org/pub/FreeBSD-Archive/old-releases/${freebsd_arch}/${freebsd_version}-RELEASE/base.txz
+URL=https://archive.freebsd.org/old-releases/${freebsd_arch}/${freebsd_version}-RELEASE/base.txz
 curl "$URL" | tar xJf - -C "$sysroot" --wildcards "${files_to_extract[@]}"
 
 # Clang can do cross-builds out of the box, if we give it the right
